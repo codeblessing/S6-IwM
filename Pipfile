@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ipykernel = "*"
+ipywidgets = "*"
+matplotlib = "*"
+numpy = "*"
+yapf = "*"
+pydicom = "*"
+
+[dev-packages]
+pytest = "*"
+
+[requires]
+python_version = "3.10"
