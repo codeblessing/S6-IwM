@@ -1,3 +1,4 @@
 [style]
 spaces_around_default_or_named_assign = true
 spaces_around_power_operator = true
+column_limit = 120

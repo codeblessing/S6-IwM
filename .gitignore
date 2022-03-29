@@ -1,5 +1,6 @@
 .vscode/
 .pytest_cache/
 .venv/
+__pychache__/
 
 *.zip
