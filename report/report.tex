@@ -83,6 +83,8 @@ możemy wyliczyć pozycję emitera na okręgu opisanym na obrazie:
 	 & emitter_y = \sin\alpha * radius + \frac{n}{2}     \\
 \end{align*}
 
+\newpage
+
 Znając dodatkowo rozpiętość kątową wachlarza detektorów $\phi$ oraz ich liczbę $D$ możemy obliczyć pozycję każdego z nich:
 
 \begin{align*}
@@ -338,19 +340,6 @@ def write_to_dicom(filename, image: ndarray, data: dict):
     ds.save_as(filename, write_like_original = False)
 \end{lstlisting}
 
-\section{Wpływ poszczególnych parametrów na jakość obrazu wynikowego.}
-\subsection{Liczba detektorów.}
-
-Liczba detektorów jest zmieniana w przedziale $\left<90, 720 \right>$ z krokiem $90$.
-\subsection{Liczba skanów.}
-
-Liczba skanów jest zmieniana w przedziale $\left<90, 720 \right>$ z krokiem $90$.
-\subsection{Rozpiętość wachlarza.}
-
-Rozpiętość wachlarza jest zmieniana w przedziale $\left<45, 270 \right>$ z krokiem $45$.
-\subsection{Filtr splotowy.}
-
-\section{Zmiana RSME podczas wykonywania kolejnych iteracji odwrotnej transformaty Radona.}
 
 \section{Wpływ poszczególnych parametrów na jakość obrazu wynikowego.}
 \subsection{Liczba detektorów.}
