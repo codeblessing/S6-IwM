@@ -231,10 +231,22 @@ def radon(image, phi, step, count) -> ndarray:
 
 \subsection{Filtrowanie sinogramu.}
 
-Wykorzystane filtrowanie jest prostym splotem nazwanym filtrem medianowym.
+Wykorzystano i porównano dwa sposoby filtrowania.\\
+
+Pierwsze filtrowanie jest prostym splotem nazwanym filtrem medianowym.
 
 
-Aby obraz nie został zbytnio rozmyty zastosowaliśmy jądro o wymiarach $3\times3$  piksele.
+Aby obraz nie został zbytnio rozmyty zastosowaliśmy jądro o wymiarach $3\times3$  piksele.\\
+
+
+Drugi filtr to splot całkowy z wykorzystaniem maski opisanej wzorem:
+
+$${h\left[k\right]=\begin{cases}
+		1 & \text{$k = 0$} \\
+		0 & \text{$k\mod 2 = 0,k\neq0$} \\
+		\displaystyle\frac{\frac{-4}{\pi^2}}{k^2} & \text{$k\mod 2 = 1,k\neq0$}
+		
+\end{cases}}$$
 
 \subsection{Ustalanie jasności poszczególnych punktów obrazu wynikowego oraz jego przetwarzanie końcowe.}
 
@@ -340,7 +352,7 @@ def write_to_dicom(filename, image: ndarray, data: dict):
     ds.save_as(filename, write_like_original = False)
 \end{lstlisting}
 
-
+\newpage
 \section{Wpływ poszczególnych parametrów na jakość obrazu wynikowego.}
 \subsection{Liczba detektorów.}
 
@@ -348,21 +360,61 @@ Liczba detektorów jest zmieniana w przedziale $\left<90, 720 \right>$ z krokiem
 
 \begin{center}
 	\includegraphics[width=0.7\textwidth]{detectors.png}
+	
+	Z wykorzystaniem filtracji splotowej.
 \end{center}
+
+
+
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{detectors_no_convolve.txt.png}
+	
+	Z wykorzystaniem filtracji medianowej.
+\end{center}
+
+Podczas rekonstrukcji obrazu z wykorzystaniem filtrowania splotowego, liczba detektorów jest pewnego rodzaju współczynnikiem skalowania jasności. Im jest ich więcej, tym silniejsze będzie odwzorowanie na całym obszarze skanu, a co za tym idzie różnica statystyczna będzie większa, ale perceptualnie zrekonstruowany obraz będzie posiadał bardziej wyraźne szczegóły oraz lepiej odwzorowane kolory i kształty obiektów. W przypadku filtracji medianowej nie dochodzi zwiększania kontrastu, lecz do rozmycia, stąd większa liczba detektorów może przekładać się na dokładność odtworzenia ogólnego zarysu i układu elementów na obrazie, a co za tym idzie,  do zmniejszenia błędu.
+
+
+\newpage
 \subsection{Liczba skanów.}
 
 Liczba skanów jest zmieniana w przedziale $\left<90, 720 \right>$ z krokiem $90$.
 
 \begin{center}
 	\includegraphics[width=0.7\textwidth]{scans.png}
+	
+	Z wykorzystaniem filtracji splotowej.
 \end{center}
+
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{scans_no_convolve.png}
+	
+	Z wykorzystaniem filtracji medianowej.
+\end{center}
+
+Najmniejsze wartości błędu otrzymano przy liczbie skanów równej 90, 180 oraz 360(bez użycia filtru splotowego). Podczas generowania obrazów oceniono, że najlepsze rezultaty są osiągane dla wartości 180 i 360. RMSE dla rekonstrukcji z wykorzystaniem filtru splotowego jest wyższy po 360 skanach niż po 180, lecz nie zauważono różnicy w dokładności odwzorowania kształtów. W przypadku obydwu filtrów wartość błędu rośnie powyżej 360 skanów. Warto także zauważyć, że przy wykorzystaniu filtru medianowego, zmiana błędu w zależności od liczby skanów jest bardzo mała.
+
+\newpage
 \subsection{Rozpiętość wachlarza.}
 
 Rozpiętość wachlarza jest zmieniana w przedziale $\left<45, 270 \right>$ z krokiem $45$.
 
 \begin{center}
 	\includegraphics[width=0.7\textwidth]{phi.png}
+	
+	Z wykorzystaniem filtracji splotowej.
 \end{center}
+
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{phi_no_convolve.png}
+	
+	Z wykorzystaniem filtracji medianowej.
+\end{center}
+
+
+Przy niezmiennej liczbie detektorów większy kąt rozwarcia powoduje utworzenie większych przerw pomiędzy skanami oraz objęcie większego fragmentu przestrzeni, która nie musi w całości być zajęta przez badany obiekt. W przypadku filtru splotowego najmniejszy błąd występuje przy małych kątach rozwarcia - $45\degree$, $90\degree$, ponieważ w tym zakresie z reguły zawiera się znaczna część skanowanego obiektu i niewielka część otoczenia. Dla większych kątów sinogram zawiera zbyt dużo informacji o otoczeniu, które podczas splotu będą generować szum(szare piksele) i powodować wzrost RMSE.
+
+
 \subsection{Filtr splotowy.}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{phantom.png}
@@ -371,27 +423,32 @@ Rozpiętość wachlarza jest zmieniana w przedziale $\left<45, 270 \right>$ z kr
 	Obraz testowy do obliczeń z wykorzystaniem filtra.
 \end{center}
 
+\newpage
 \begin{center}
 	Rekonstrukcja bez filtrowania.
 
 
-	\includegraphics[width=0.4\textwidth]{reconstructed1.png}
-	\includegraphics[width=0.4\textwidth]{reconstructed2.png}
+	\includegraphics[width=0.45\textwidth]{reconstructed1.png}
+	\includegraphics[width=0.45\textwidth]{reconstructed2.png}
 
-	RMSE1 0,20693420547948 \hspace{1.5cm} RMSE2 0,266156126913852
+	$RMSE_1=0,20693420547948$ \hspace{1.5cm} $RMSE_2=0,266156126913852$
 
 \end{center}
 
 
 \begin{center}
-	Rekonstrukcja z filtrem.
+	Rekonstrukcja z filtrem splotowym.
 
 
-	\includegraphics[width=0.4\textwidth]{reconstructed_filtered1.png}
-	\includegraphics[width=0.4\textwidth]{reconstructed_filtered2.png}
+	\includegraphics[width=0.45\textwidth]{reconstructed_filtered1.png}
+	\includegraphics[width=0.45\textwidth]{reconstructed_filtered2.png}
 
-	RMSE1 filtr - 0,249729691096470\hspace{1.5cm} RMSE2 filtr - 0,26778570956508
+	$RMSE_1 = 0,249729691096470$ \hspace{1.5cm} $RMSE_2=0,26778570956508$
 \end{center}
+
+
+Na powyższym przykładzie można zauważyć, że większa wartość błędu RMSE nie oznacza mniejszej czytelności wynikowego obrazu. Pierwszy obraz ma widocznie ostrzejsze kontury, widoczne są małe elipsy w dolnej części obiektu. Drugi obraz również charakteryzuje się ostrzejszymi konturami, a także widocznym przyciemnieniem niektórych obszarów w obrębie skanu - co miało wpływ na zmniejszenie różnicy błędu.
+\newpage
 
 \section{Zmiana RMSE podczas wykonywania kolejnych iteracji odwrotnej transformaty Radona.}
 
@@ -400,9 +457,23 @@ Parametry transformacji:
 \begin{itemize}
 	\item liczba detektorów - 180
 	\item rozpiętość wachlarza - 180\degree
-	\item łączna liczba skanów - 180
+	\item łączna liczba skanów - 360
 \end{itemize}
+
 \begin{center}
 	\includegraphics[width=0.7\textwidth]{change.png}
+	
+	Z wykorzystaniem filtracji splotowej.
 \end{center}
+
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{change_no_convolve.png}
+	
+	Z wykorzystaniem filtracji medianowej.
+\end{center}
+
+
+Podczas pierwszych 60 iteracji błąd dynamicznie rośnie, po czym oscyluje w okolicach 0.45 - odtwarzany jest wtedy jedynie fragment krawędzi obiektu, całe otoczenie znajdujące się po drugiej stronie jest niewiadomą, co powoduje generowanie silnego szumu przez filtr splotowy. W trakcie kolejnych 180 iteracji tworzy się zarys badanego obiektu, natomiast cały obraz pozostaje silnie rozjaśniony i zaszumiony. W okolicach 230. - 240. iteracji kończy się odtwarzanie głównego obramowania obiektu i cały obraz zostaje przyciemniony. Pod koniec rekonstrukcji utrwalane są pozostałe kontury oraz uzupełniane są informacje o całym otoczeniu.
+
+
 \end{document}
