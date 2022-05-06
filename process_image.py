@@ -1,12 +1,12 @@
 import numpy as np
-
+import cv2 as cv
+from matplotlib.pylab import imshow
+from skimage.filters import frangi, sato
+from skimage.util import img_as_bool
+from matplotlib import pyplot as plt
+from skimage.morphology import binary_erosion, remove_small_objects, remove_small_holes
 def process_image(image: np.ndarray, manual: np.ndarray, mask: np.ndarray):
-    import cv2 as cv
-    from matplotlib.pylab import imshow
-    from skimage.filters import frangi
-    from skimage.util import img_as_bool
-    from matplotlib import pyplot as plt
-    from skimage.morphology import binary_erosion, remove_small_objects, remove_small_holes
+    
 
     image_lab = cv.cvtColor(image, cv.COLOR_BGR2LAB)
     l, a, b = cv.split(image_lab)
