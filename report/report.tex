@@ -1,0 +1,100 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{multirow}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{gensymb}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+% \usepackage[draft,nosingleletter]{impnattypo}
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+\begin{center}
+	\begin{tabular}{cc}
+		\hline
+		\multicolumn{2}{|c|}{\begin{tabular}[c]{@{}c@{}} \\ \LARGE \so{Informatyka w Medycynie - Laboratorium} \\ \\ \end{tabular}}         \\ \hline
+		\multicolumn{2}{|c|}{\begin{tabular}[l]{@{}l@{}}\\\Large Wykrywanie naczyń dna siatkówki oka - projekt \\ \\ \end{tabular}}                      \\ \hline
+		\multicolumn{1}{|l|}{\begin{tabular}[l]{@{}l@{}} \\ \hspace{2cm}Kierunek/semestr: Informatyka/6 \hspace{2cm} \\ \\ \end{tabular}} &
+		\multicolumn{1}{|c|}{\begin{tabular}[l]{@{}l@{}} \\ Grupa: L16 \\ \\ \end{tabular}}                                                 \\ \hline
+		\multicolumn{2}{|c|}{\begin{tabular}[c]{@{}c@{}}\\ Jakub Kwiatkowski 145356 \\Paweł Strzelczyk 145217  \\ \\ \end{tabular}}         \\ \hline
+	\end{tabular}
+\end{center}
+
+\section{Opis projektu.}
+
+Projekt został przygotowany w formie interaktywnego notatnika Jupyter Notebook.
+
+
+
+Do wykonania symulacji wykorzystano język Python 3 oraz biblioteki
+
+\begin{itemize}
+	\item numpy
+	\item matplotlib
+	\item skimage
+	\item OpenCV
+	\item pandas
+	\item ipython (ipywidgets, IPython)
+	\item scikit-learn
+	\item joblib
+	\item tensorflow
+\end{itemize}
+
+\section{Opis wykorzystanych metod wykrywania naczyń dna siatkówki oka.}
+\subsection{Przetwarzanie obrazu.}
+\paragraph{Algorytm przetwarzania.}
+\paragraph{Uzasadnienie.}
+
+
+\subsection{Uczenie maszynowe - klasyfikator kNN.}
+\paragraph{Podział obrazu na wycinki.}
+\paragraph{Ekstrakcja cech.}
+\paragraph{Metoda uczenia maszynowego.}
+\paragraph{Ocena działania klasyfikatora na zbiorze hold-out.}
+\paragraph{Uzasadnienie.}
+\subsection{Przygotowanie danych.}
+\paragraph{Struktura sieci.}
+\paragraph{Uzasadnienie.}
+
+\section{Wyniki.}
+
+
+\section{Analiza porównawcza.}
+
+
+
+
+\end{document}
