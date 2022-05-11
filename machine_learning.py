@@ -20,10 +20,13 @@ def get_metrics(files):
     from prepare_image import prepare_image
     from joblib import dump, load
     from IPython.display import display
+    from imblearn.metrics import sensitivity_specificity_support
     accuracies = []
     specificities = []
     sensitivities = []
     g_means = []
+    w_sen = []
+    w_spe = []
     for file_number in files:
         kNN_classifier = load('kNN_classifier.joblib')
         image = cv.imread('data/all/images/' + file_number + '_h.JPG')
@@ -56,6 +59,9 @@ def get_metrics(files):
         inversed_image = img_as_bool(inversed_image)
         mask = img_as_bool(mask)
         TN, FP, FN, TP = confusion_matrix(mask.flatten(), inversed_image.flatten()).ravel()
+        x = sensitivity_specificity_support(mask.flatten(), inversed_image.flatten(), average='weighted')
+        w_sen.append(x[0])
+        w_spe.append(x[1])
         accuracy = (TP + TN) / (TP + FP + FN + TN)
         sensitivity = TP / (TP + FN)
         specificity = TN / (TN + FP)
@@ -65,8 +71,8 @@ def get_metrics(files):
         specificities.append(specificity)
         g_means.append(geometric_mean)
 
-    data = [files, accuracies, sensitivities, specificities, g_means]
-    data_frame = pd.DataFrame(data, index=['file no.', 'accuracy', 'sensitivity', 'specificity', 'G-mean']).transpose()
+    data = [files, accuracies, sensitivities, specificities, g_means, w_sen, w_spe]
+    data_frame = pd.DataFrame(data, index=['file no.', 'accuracy', 'sensitivity', 'specificity', 'G-mean', 'w_sensitivity', 'w_specificity']).transpose()
     data_frame.to_csv('machine_learning.csv')
     return data_frame
 

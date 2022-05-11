@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.13.2 (TeX Live 2021/W32TeX)  (format=lualatex 2022.3.30)  11 MAY 2022 04:30
+This is LuaHBTeX, Version 1.13.2 (TeX Live 2021/W32TeX)  (format=lualatex 2022.3.30)  11 MAY 2022 21:44
  restricted system commands enabled.
 **report.tex
 (./report.tex
@@ -616,12 +616,12 @@ Overfull \hbox (5.09586pt too wide) in paragraph at lines 82--82
 ówki
  []
 
-<./processing/input_image.png, id=13, 2532.3408pt x 1688.2272pt>
+<./processing/input_image.png, id=15, 2532.3408pt x 1688.2272pt>
 File: ./processing/input_image.png Graphic file (type png)
 <use ./processing/input_image.png>
 Package luatex.def Info: ./processing/input_image.png  used on input line 87.
 (luatex.def)             Requested size: 362.37569pt x 241.57953pt.
-<./processing/lab_image.png, id=14, 2532.3408pt x 1688.2272pt>
+<./processing/lab_image.png, id=16, 2532.3408pt x 1688.2272pt>
 File: ./processing/lab_image.png Graphic file (type png)
 <use ./processing/lab_image.png>
 Package luatex.def Info: ./processing/lab_image.png  used on input line 95.
@@ -632,122 +632,207 @@ Overfull \hbox (0.77531pt too wide) in paragraph at lines 102--103
 ów-na-nia his-togramu obrazu
  []
 
-<./processing/clahe_image.png, id=21, 2532.3408pt x 1688.2272pt>
+<./processing/clahe_image.png, id=23, 2532.3408pt x 1688.2272pt>
 File: ./processing/clahe_image.png Graphic file (type png)
 <use ./processing/clahe_image.png>
 Package luatex.def Info: ./processing/clahe_image.png  used on input line 104.
 (luatex.def)             Requested size: 362.37569pt x 241.57953pt.
-<./processing/green_image.png, id=22, 2532.3408pt x 1688.2272pt>
+<./processing/green_image.png, id=24, 2532.3408pt x 1688.2272pt>
 File: ./processing/green_image.png Graphic file (type png)
 <use ./processing/green_image.png>
 Package luatex.def Info: ./processing/green_image.png  used on input line 111.
 (luatex.def)             Requested size: 362.37569pt x 241.57953pt.
 [3<./processing/clahe_image.png><./processing/green_image.png>]
-<./processing/frangi_image.png, id=28, 2532.3408pt x 1688.2272pt>
+<./processing/frangi_image.png, id=30, 2532.3408pt x 1688.2272pt>
 File: ./processing/frangi_image.png Graphic file (type png)
 <use ./processing/frangi_image.png>
 Package luatex.def Info: ./processing/frangi_image.png  used on input line 120.
 
 (luatex.def)             Requested size: 362.37569pt x 241.57953pt.
-<./processing/thresh_image.png, id=29, 2532.3408pt x 1688.2272pt>
+<./processing/thresh_image.png, id=31, 2532.3408pt x 1688.2272pt>
 File: ./processing/thresh_image.png Graphic file (type png)
 <use ./processing/thresh_image.png>
 Package luatex.def Info: ./processing/thresh_image.png  used on input line 127.
 
 (luatex.def)             Requested size: 362.37569pt x 241.57953pt.
  [4<./processing/frangi_image.png><./processing/thresh_image.png>]
-<./processing/deblobed_image.png, id=35, 2532.3408pt x 1688.2272pt>
+<./processing/deblobed_image.png, id=37, 2532.3408pt x 1688.2272pt>
 File: ./processing/deblobed_image.png Graphic file (type png)
 <use ./processing/deblobed_image.png>
 Package luatex.def Info: ./processing/deblobed_image.png  used on input line 13
 5.
 (luatex.def)             Requested size: 362.37569pt x 241.57953pt.
 
-Overfull \hbox (1.65292pt too wide) in paragraph at lines 144--145
+Overfull \hbox (9.22285pt too wide) in paragraph at lines 139--140
+\TU/lmr/bx/n/10.95 Uza-sad-nie-nie.[] \TU/lmr/m/n/10.95 Zde-cy-dowano się na za
+-s-tosowanie fil-tru Frangi’ego, ponieważ jest to dedykowana
+ []
+
+<./processing/data.png, id=38, 664.73344pt x 255.95625pt>
+File: ./processing/data.png Graphic file (type png)
+<use ./processing/data.png>
+Package luatex.def Info: ./processing/data.png  used on input line 143.
+(luatex.def)             Requested size: 362.37569pt x 139.5344pt.
+[5<./processing/deblobed_image.png><./processing/data.png>]
+Overfull \hbox (1.65292pt too wide) in paragraph at lines 153--154
 \TU/lmr/m/n/10.95 się). W tym celu sko-rzys-tano z funkcji dostęp-nej w bib-li
 otece numpy - stride_tricks.as_strided(). 
  []
 
-[5<./processing/deblobed_image.png>]
-<./processing/01_h.png, id=42, 1015.54407pt x 240.9pt>
+[6]
+<./processing/01_h.png, id=46, 1015.54407pt x 240.9pt>
 File: ./processing/01_h.png Graphic file (type png)
 <use ./processing/01_h.png>
-Package luatex.def Info: ./processing/01_h.png  used on input line 177.
+Package luatex.def Info: ./processing/01_h.png  used on input line 189.
 (luatex.def)             Requested size: 452.9679pt x 107.44827pt.
-<./processing/04_h.png, id=43, 1012.5328pt x 240.9pt>
+<./processing/04_h.png, id=47, 1012.5328pt x 240.9pt>
 File: ./processing/04_h.png Graphic file (type png)
 <use ./processing/04_h.png>
-Package luatex.def Info: ./processing/04_h.png  used on input line 179.
+Package luatex.def Info: ./processing/04_h.png  used on input line 191.
 (luatex.def)             Requested size: 452.9679pt x 107.77174pt.
-<./processing/09_h.png, id=44, 1014.03844pt x 240.9pt>
+<./processing/09_h.png, id=48, 1014.03844pt x 240.9pt>
 File: ./processing/09_h.png Graphic file (type png)
 <use ./processing/09_h.png>
-Package luatex.def Info: ./processing/09_h.png  used on input line 181.
+Package luatex.def Info: ./processing/09_h.png  used on input line 193.
 (luatex.def)             Requested size: 452.9679pt x 107.60634pt.
-<./processing/12_h.png, id=45, 1013.28563pt x 237.88875pt>
+<./processing/12_h.png, id=49, 1013.28563pt x 237.88875pt>
 File: ./processing/12_h.png Graphic file (type png)
 <use ./processing/12_h.png>
-Package luatex.def Info: ./processing/12_h.png  used on input line 183.
+Package luatex.def Info: ./processing/12_h.png  used on input line 195.
 (luatex.def)             Requested size: 452.9679pt x 106.34111pt.
-<./processing/15_h.png, id=46, 1014.79124pt x 238.64156pt>
+<./processing/15_h.png, id=50, 1009.52156pt x 238.64156pt>
 File: ./processing/15_h.png Graphic file (type png)
 <use ./processing/15_h.png>
-Package luatex.def Info: ./processing/15_h.png  used on input line 185.
-(luatex.def)             Requested size: 452.9679pt x 106.52106pt.
- [6<./processing/01_h.png><./processing/04_h.png><./processing/09_h.png><./proce
+Package luatex.def Info: ./processing/15_h.png  used on input line 197.
+(luatex.def)             Requested size: 452.9679pt x 107.07819pt.
+ [7<./processing/01_h.png><./processing/04_h.png><./processing/09_h.png><./proce
 ssing/12_h.png><./processing/15_h.png>]
-<./ML/01_h.png, id=55, 849.92531pt x 203.25937pt>
+<./ML/01_h.png, id=59, 849.92531pt x 203.25937pt>
 File: ./ML/01_h.png Graphic file (type png)
 <use ./ML/01_h.png>
-Package luatex.def Info: ./ML/01_h.png  used on input line 194.
+Package luatex.def Info: ./ML/01_h.png  used on input line 206.
 (luatex.def)             Requested size: 452.9679pt x 108.32863pt.
-<./ML/04_h.png, id=56, 843.90282pt x 201.00093pt>
+<./ML/04_h.png, id=60, 843.90282pt x 201.00093pt>
 File: ./ML/04_h.png Graphic file (type png)
 <use ./ML/04_h.png>
-Package luatex.def Info: ./ML/04_h.png  used on input line 196.
+Package luatex.def Info: ./ML/04_h.png  used on input line 208.
 (luatex.def)             Requested size: 452.9679pt x 107.88867pt.
-<./ML/09_h.png, id=57, 843.90282pt x 201.00093pt>
+<./ML/09_h.png, id=61, 843.90282pt x 201.00093pt>
 File: ./ML/09_h.png Graphic file (type png)
 <use ./ML/09_h.png>
-Package luatex.def Info: ./ML/09_h.png  used on input line 198.
+Package luatex.def Info: ./ML/09_h.png  used on input line 210.
 (luatex.def)             Requested size: 452.9679pt x 107.88867pt.
-<./ML/12_h.png, id=58, 844.65562pt x 202.50656pt>
+<./ML/12_h.png, id=62, 844.65562pt x 202.50656pt>
 File: ./ML/12_h.png Graphic file (type png)
 <use ./ML/12_h.png>
-Package luatex.def Info: ./ML/12_h.png  used on input line 200.
+Package luatex.def Info: ./ML/12_h.png  used on input line 212.
 (luatex.def)             Requested size: 452.9679pt x 108.60103pt.
-<./ML/15_h.png, id=59, 844.65562pt x 202.50656pt>
+<./ML/15_h.png, id=63, 841.64438pt x 198.7425pt>
 File: ./ML/15_h.png Graphic file (type png)
 <use ./ML/15_h.png>
-Package luatex.def Info: ./ML/15_h.png  used on input line 202.
-(luatex.def)             Requested size: 452.9679pt x 108.60103pt.
-<./processing/data.png, id=60, 663.98062pt x 241.65282pt>
-File: ./processing/data.png Graphic file (type png)
-<use ./processing/data.png>
-Package luatex.def Info: ./processing/data.png  used on input line 214.
-(luatex.def)             Requested size: 452.9679pt x 164.8564pt.
-
-[7<./ML/01_h.png><./ML/04_h.png><./ML/09_h.png><./ML/12_h.png><./ML/15_h.png>]
-<./ML/data.png, id=69, 448.67625pt x 91.09032pt>
+Package luatex.def Info: ./ML/15_h.png  used on input line 214.
+(luatex.def)             Requested size: 452.9679pt x 106.9615pt.
+ [8<./ML/01_h.png><./ML/04_h.png><./ML/09_h.png><./ML/12_h.png><./ML/15_h.png>]
+<./processing/data5.png, id=72, 664.73344pt x 90.3375pt>
+File: ./processing/data5.png Graphic file (type png)
+<use ./processing/data5.png>
+Package luatex.def Info: ./processing/data5.png  used on input line 225.
+(luatex.def)             Requested size: 452.9679pt x 61.55962pt.
+<./ML/data.png, id=73, 610.53094pt x 91.09032pt>
 File: ./ML/data.png Graphic file (type png)
 <use ./ML/data.png>
-Package luatex.def Info: ./ML/data.png  used on input line 223.
-(luatex.def)             Requested size: 271.7835pt x 55.17859pt.
-File: ./processing/data.png Graphic file (type png)
-<use ./processing/data.png>
-Package luatex.def Info: ./processing/data.png  used on input line 232.
-(luatex.def)             Requested size: 452.9679pt x 164.8564pt.
-
-[8<./processing/data.png><./ML/data.png>] (./report.aux))
+Package luatex.def Info: ./ML/data.png  used on input line 233.
+(luatex.def)             Requested size: 452.9679pt x 67.58505pt.
+<./01_h.png, id=74, 841.64438pt x 201.75375pt>
+File: ./01_h.png Graphic file (type png)
+<use ./01_h.png>
+Package luatex.def Info: ./01_h.png  used on input line 243.
+(luatex.def)             Requested size: 452.9679pt x 108.58212pt.
+<./processing/data1.png, id=75, 664.73344pt x 31.61812pt>
+File: ./processing/data1.png Graphic file (type png)
+<use ./processing/data1.png>
+Package luatex.def Info: ./processing/data1.png  used on input line 249.
+(luatex.def)             Requested size: 452.9679pt x 21.54585pt.
+<./ML/data1.png, id=76, 609.77812pt x 30.86531pt>
+File: ./ML/data1.png Graphic file (type png)
+<use ./ML/data1.png>
+Package luatex.def Info: ./ML/data1.png  used on input line 254.
+(luatex.def)             Requested size: 452.9679pt x 22.92897pt.
+ [9<./processing/data5.png><./ML/data.png><./01_h.png><./processing/data1.png><.
+/ML/data1.png>]
+<./04_h.png, id=81, 842.39719pt x 198.7425pt>
+File: ./04_h.png Graphic file (type png)
+<use ./04_h.png>
+Package luatex.def Info: ./04_h.png  used on input line 262.
+(luatex.def)             Requested size: 452.9679pt x 106.8675pt.
+<./processing/data4.png, id=82, 664.73344pt x 30.86531pt>
+File: ./processing/data4.png Graphic file (type png)
+<use ./processing/data4.png>
+Package luatex.def Info: ./processing/data4.png  used on input line 268.
+(luatex.def)             Requested size: 452.9679pt x 21.03285pt.
+<./ML/data4.png, id=83, 611.28375pt x 30.86531pt>
+File: ./ML/data4.png Graphic file (type png)
+<use ./ML/data4.png>
+Package luatex.def Info: ./ML/data4.png  used on input line 273.
+(luatex.def)             Requested size: 452.9679pt x 22.8715pt.
+<./09_h.png, id=84, 841.64438pt x 199.49532pt>
+File: ./09_h.png Graphic file (type png)
+<use ./09_h.png>
+Package luatex.def Info: ./09_h.png  used on input line 280.
+(luatex.def)             Requested size: 452.9679pt x 107.36665pt.
+<./processing/data9.png, id=85, 664.73344pt x 31.61812pt>
+File: ./processing/data9.png Graphic file (type png)
+<use ./processing/data9.png>
+Package luatex.def Info: ./processing/data9.png  used on input line 286.
+(luatex.def)             Requested size: 452.9679pt x 21.54585pt.
+<./ML/data9.png, id=86, 610.53094pt x 31.61812pt>
+File: ./ML/data9.png Graphic file (type png)
+<use ./ML/data9.png>
+Package luatex.def Info: ./ML/data9.png  used on input line 291.
+(luatex.def)             Requested size: 452.9679pt x 23.45926pt.
+ [10<./04_h.png><./processing/data4.png><./ML/data4.png><./09_h.png><./processin
+g/data9.png><./ML/data9.png>]
+<./12_h.png, id=92, 840.89156pt x 201.75375pt>
+File: ./12_h.png Graphic file (type png)
+<use ./12_h.png>
+Package luatex.def Info: ./12_h.png  used on input line 299.
+(luatex.def)             Requested size: 452.9679pt x 108.68063pt.
+<./processing/data12.png, id=93, 663.22781pt x 31.61812pt>
+File: ./processing/data12.png Graphic file (type png)
+<use ./processing/data12.png>
+Package luatex.def Info: ./processing/data12.png  used on input line 306.
+(luatex.def)             Requested size: 452.9679pt x 21.59457pt.
+<./ML/data12.png, id=94, 609.77812pt x 30.86531pt>
+File: ./ML/data12.png Graphic file (type png)
+<use ./ML/data12.png>
+Package luatex.def Info: ./ML/data12.png  used on input line 311.
+(luatex.def)             Requested size: 452.9679pt x 22.92897pt.
+<./15_h.png, id=95, 840.13875pt x 201.00093pt>
+File: ./15_h.png Graphic file (type png)
+<use ./15_h.png>
+Package luatex.def Info: ./15_h.png  used on input line 318.
+(luatex.def)             Requested size: 452.9679pt x 108.3702pt.
+<./processing/data15.png, id=96, 664.73344pt x 30.1125pt>
+File: ./processing/data15.png Graphic file (type png)
+<use ./processing/data15.png>
+Package luatex.def Info: ./processing/data15.png  used on input line 324.
+(luatex.def)             Requested size: 452.9679pt x 20.51987pt.
+<./ML/data15.png, id=97, 607.51968pt x 30.86531pt>
+File: ./ML/data15.png Graphic file (type png)
+<use ./ML/data15.png>
+Package luatex.def Info: ./ML/data15.png  used on input line 329.
+(luatex.def)             Requested size: 452.9679pt x 23.01373pt.
+ [11<./12_h.png><./processing/data12.png><./ML/data12.png><./15_h.png><./process
+ing/data15.png><./ML/data15.png>] (./report.aux))
 
 Here is how much of LuaTeX's memory you used:
- 13923 strings out of 477800
+ 14109 strings out of 477800
  100000,662416 words of node,token memory allocated
  604 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 10 glyph, 16 attribute, 53 glue_spe
 c, 16 attribute_list, 2 write nodes
-   avail lists: 2:444,3:147,4:50,5:226,6:31,7:3164,8:3,9:318,10:2,11:173
- 33946 multiletter control sequences out of 65536+600000
+   avail lists: 2:430,3:145,4:46,5:266,6:26,7:3884,8:9,9:314,10:3,11:210
+ 34042 multiletter control sequences out of 65536+600000
  34 fonts using 1644495 bytes
  105i,14n,101p,466b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2021/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/texl
@@ -757,10 +842,10 @@ f-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/texlive/2021/texmf-dis
 t/fonts/opentype/public/lm/lmroman17-regular.otf><c:/texlive/2021/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (8 pages, 29292456 bytes).
+Output written on report.pdf (11 pages, 30038676 bytes).
 
-PDF statistics: 111 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
+PDF statistics: 143 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

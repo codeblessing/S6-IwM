@@ -55,26 +55,26 @@
 
 \section{Opis projektu.}
 
-Projekt został przygotowany w formie interaktywnego notatnika Jupyter Notebook.
+Projekt został przygotowany w formie interaktywnego Jupyter Notebook.
 
 
 
-Do wykonania symulacji wykorzystano język Python 3 oraz biblioteki
+Do przetwarzania obrazów oraz uczenia maszynowego wykorzystano język Python 3 oraz biblioteki:
 
 \begin{itemize}
-	\item numpy
-	\item matplotlib
-	\item skimage
-	\item OpenCV
-	\item pandas
-	\item ipython (ipywidgets, IPython)
-	\item scikit-learn
-	\item joblib
-	\item tensorflow
+	\item numpy,
+	\item matplotlib,
+	\item skimage,
+	\item OpenCV,
+	\item pandas,
+	\item ipython (ipywidgets, IPython),
+	\item scikit-learn,
+	\item joblib.
 \end{itemize}
 
 
-Do analizy przetwarzania obrazów oraz uczenia maszynowego skorzystano z bazy HRF, natomiast do uczenia głębokiej sieci neuronowej skorzystano z bazy CHASE, z uwagi na format zdjęć zbliżony do kwadratu.
+Do analizy przetwarzania obrazów oraz uczenia maszynowego skorzystano z bazy danych medycznych HRF (High-Resolution Fundus). Zawiera ona 45 zdjęć o wymiarach $3504\times2336$ px.
+W projekcie wykorzystano 15 zdjęć dna oka zdrowych pacjentów. Do każdego zdjęcia jest dostępna ręczna segmentacja oraz maska pola widzenia.
 
 
 \newpage
@@ -136,6 +136,15 @@ Zastosowanie wbudowanych funkcji usuwania małych obiektów oraz dziur, następn
 \end{center}
 \paragraph{Uzasadnienie.}
 
+Zdecydowano się na zastosowanie filtru Frangi'ego, ponieważ jest to dedykowana metoda wykrywania naczyń krwionośnych. Przetwarzanie wstępne miało na celu maksymalne zwiększenie kontrastu pomiędzy naczyniami a tłem. Przetwarzanie końcowe polegało na usunięciu niedoskonałości powstałych w wyniku przeprowadzenia filtrowania, m.in. na pozostawieniu jedynie ciągłych elementów o określonej powierzchni.
+
+\paragraph{Miary statystyczne.}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/data.png}
+\end{center}
+
+\newpage
+
 
 \subsection{Uczenie maszynowe - klasyfikator kNN.}
 \paragraph{Podział obrazu na wycinki.}
@@ -167,9 +176,12 @@ Wynik działania klasyfikatora - miary statystyczne zbioru hold-out testowego or
 
 
 \paragraph{Uzasadnienie.}
-\subsection{Przygotowanie danych.}
-\paragraph{Struktura sieci.}
-\paragraph{Uzasadnienie.}
+
+Wybór klasyfikatora kNN był pokierowany przede wszystkim poprawnie oznakowanym zbiorem danych, tzn. dla każdego piksela można stwierdzić, czy przynależy on do naczynia krwionośnego.
+Ponadto, zbiór danych jest pozbawiony dużych odchyleń - takie parametry jak średnia kolorów lub wariancja, zawierają się w określonym przedziale w przypadku czarno-białego zdjęcia. Klasyfikator ten umożliwia także manipulowanie liczbą k, która ma znaczący wpływ na jakość klasyfikacji, dając możliwość znalezienia najlepszej jej wartości.
+
+\newpage
+
 
 \section{Wyniki.}
 \subsection{Przetwarzanie obrazów.}
@@ -208,30 +220,118 @@ Wynik działania klasyfikatora - miary statystyczne zbioru hold-out testowego or
 \section{Analiza porównawcza.}
 \subsection{Przetwarzanie obrazów.}
 
-\paragraph{Zestawienie miar statystycznych dla przetworzonych obrazów.}
 \begin{center}
 	
-		\includegraphics[width=\textwidth]{./processing/data.png}
+		\includegraphics[width=\textwidth]{./processing/data5.png}
 		
 \end{center}
 
 \subsection{Uczenie maszynowe.}
 
-\paragraph{Zestawienie miar statystycznych dla przetworzonych obrazów.}
 \begin{center}
 	
-	\includegraphics[width=0.6\textwidth]{./ML/data.png}
+	\includegraphics[width=\textwidth]{./ML/data.png}
 	
 \end{center}
 
-\subsection{Głęboka sieć neuronowa.}
+\subsection{Porównanie metod segmentacji.}
 
-\paragraph{Zestawienie miar statystycznych dla przetworzonych obrazów.}
+\paragraph{Obraz nr 1.}
+
 \begin{center}
 	
-	\includegraphics[width=\textwidth]{./processing/data.png}
+	\includegraphics[width=\textwidth]{./01_h.png}
 	
 \end{center}
+
+\paragraph{Miary oceny przetwarzania.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./processing/data1.png}
+\end{center}
+
+\paragraph{Miary oceny uczenia maszynowego.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./ML/data1.png}
+\end{center}
+
+\newpage
+\paragraph{Obraz nr 4.}
+
+\begin{center}
+	
+	\includegraphics[width=\textwidth]{./04_h.png}
+	
+\end{center}
+
+\paragraph{Miary oceny przetwarzania.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./processing/data4.png}
+\end{center}
+
+\paragraph{Miary oceny uczenia maszynowego.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./ML/data4.png}
+\end{center}
+
+\paragraph{Obraz nr 9.}
+
+\begin{center}
+	
+	\includegraphics[width=\textwidth]{./09_h.png}
+	
+\end{center}
+
+\paragraph{Miary oceny przetwarzania.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./processing/data9.png}
+\end{center}
+
+\paragraph{Miary oceny uczenia maszynowego.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./ML/data9.png}
+\end{center}
+
+\newpage
+\paragraph{Obraz nr 12.}
+
+\begin{center}
+	
+	\includegraphics[width=\textwidth]{./12_h.png}
+	
+\end{center}
+
+
+\paragraph{Miary oceny przetwarzania.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./processing/data12.png}
+\end{center}
+
+\paragraph{Miary oceny uczenia maszynowego.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./ML/data12.png}
+\end{center}
+
+\paragraph{Obraz nr 15.}
+
+\begin{center}
+	
+	\includegraphics[width=\textwidth]{./15_h.png}
+	
+\end{center}
+
+\paragraph{Miary oceny przetwarzania.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./processing/data15.png}
+\end{center}
+
+\paragraph{Miary oceny uczenia maszynowego.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./ML/data15.png}
+\end{center}
+
+
+
+
 
 
 
