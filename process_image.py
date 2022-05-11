@@ -5,6 +5,7 @@ from skimage.filters import frangi, sato
 from skimage.util import img_as_bool
 from matplotlib import pyplot as plt
 from skimage.morphology import binary_erosion, remove_small_objects, remove_small_holes
+from imblearn.metrics import sensitivity_specificity_support
 def process_image(image: np.ndarray, manual: np.ndarray, mask: np.ndarray):
     
 
@@ -42,5 +43,6 @@ def process_image(image: np.ndarray, manual: np.ndarray, mask: np.ndarray):
     FN = np.sum(mask_binary[mask_binary == 1]) - \
         np.sum(processed_binary[mask_binary == 1])
     TN = image_size - np.sum(processed_binary[mask_binary == 0]) - TP - FN
+    x = sensitivity_specificity_support(mask_binary.flatten(), processed_binary.flatten(), average='weighted')
 
-    return TN, FP, FN, TP
+    return TN, FP, FN, TP, x[0], x[1]

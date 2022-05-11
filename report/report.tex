@@ -73,26 +73,165 @@ Do wykonania symulacji wykorzystano język Python 3 oraz biblioteki
 	\item tensorflow
 \end{itemize}
 
+
+Do analizy przetwarzania obrazów oraz uczenia maszynowego skorzystano z bazy HRF, natomiast do uczenia głębokiej sieci neuronowej skorzystano z bazy CHASE, z uwagi na format zdjęć zbliżony do kwadratu.
+
+
+\newpage
+
 \section{Opis wykorzystanych metod wykrywania naczyń dna siatkówki oka.}
 \subsection{Przetwarzanie obrazu.}
 \paragraph{Algorytm przetwarzania.}
+\subparagraph{Wczytanie obrazu.}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/input_image.png}
+\end{center}
+
+\subparagraph{Konwersja do przestrzeni barw CIELab.}
+
+
+Konwersja w celu wyizolowania kanału l tejże przestrzeni, który dobrze odpowiada jasności obrazu.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/lab_image.png}
+\end{center}
+
+\newpage
+\subparagraph{Wyrównanie histogramu.}
+
+
+Zastosowano wariant CLAHE wyrównania histogramu obrazu z progiem 3.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/clahe_image.png}
+\end{center}
+\subparagraph{Ekstrakcja kanału koloru zielonego.}
+
+
+Naturalnie czerwone naczynia krwionośne są dobrze widoczne w zielonym kanale obrazu.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/green_image.png}
+\end{center}
+
+\newpage
+\subparagraph{Filtr Frangi.}
+
+
+Zastosowano filtr Frangi dostępny w bibliotece sckikit-image.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/frangi_image.png}
+\end{center}
+\subparagraph{Filtr progowy.}
+
+
+Binarny przydział pikseli do klas - stwierdzenie czy dany piksel jest naczyniem. Jako próg odcięcia przyjęto średnią arytmetyczną wartość pikseli na obrazie, pomnożoną razy 0,45.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/thresh_image.png}
+\end{center}
+
+\newpage
+\subparagraph{Przetwarzanie końcowe.}
+
+Zastosowanie wbudowanych funkcji usuwania małych obiektów oraz dziur, następnie przeprowadzenie erozji oraz domknięcia morfologicznego.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{./processing/deblobed_image.png}
+\end{center}
 \paragraph{Uzasadnienie.}
 
 
 \subsection{Uczenie maszynowe - klasyfikator kNN.}
 \paragraph{Podział obrazu na wycinki.}
+
+
+Z uwagi na zasoby pamięciowe oraz dostępną moc obliczeniową, zdecydowano się na zmniejszenie wymiarów obrazów źródłowych do 20\% oryginalnej wielkości. Następnie dokonano podziału obrazu na wycinki o wymiarach $5\times5$, co jeden piksel (nakładające się). W tym celu skorzystano z funkcji dostępnej w bibliotece numpy - stride\_tricks.as\_strided().
 \paragraph{Ekstrakcja cech.}
+
+Do opisu wycinków skorzystano z:
+\begin{itemize}
+	\item średniej kolorów,
+	\item wariancji kolorów,
+	\item pierwszych siedmiu momentów Hu.
+\end{itemize}
 \paragraph{Metoda uczenia maszynowego.}
+
+Jako metody uczenia maszynowego zdecydowano się na wykorzystanie klasyfikatora k najbliższych sąsiadów. Na podstawie jednego obrazu stworzono zbiór treningowy oraz testowy. Na ich podstawie nauczono oraz przetestowano model. Przyjęte parametry klasyfikatora to liczba sąsiadów $= 3$, liczba klas decyzyjnych$ = 2$, miara odległości - euklidesowa.
+
 \paragraph{Ocena działania klasyfikatora na zbiorze hold-out.}
+
+Wynik działania klasyfikatora - miary statystyczne zbioru hold-out testowego oraz przewidywanego.
+
+\begin{itemize}
+	\item trafność - 0,9609
+	\item czułość - 0,8666
+	\item specyficzność - 0,9777
+	\item średnia G - 0,9204
+\end{itemize}
+
+
 \paragraph{Uzasadnienie.}
 \subsection{Przygotowanie danych.}
 \paragraph{Struktura sieci.}
 \paragraph{Uzasadnienie.}
 
 \section{Wyniki.}
+\subsection{Przetwarzanie obrazów.}
+\begin{center}
+	\includegraphics[width=\textwidth]{./processing/01_h.png}
+	
+	\includegraphics[width=\textwidth]{./processing/04_h.png}
+	
+	\includegraphics[width=\textwidth]{./processing/09_h.png}
+	
+	\includegraphics[width=\textwidth]{./processing/12_h.png}
+	
+	\includegraphics[width=\textwidth]{./processing/15_h.png}
+	
+\end{center}
 
+
+\newpage
+\subsection{Uczenie maszynowe.}
+
+\begin{center}
+	\includegraphics[width=\textwidth]{./ML/01_h.png}
+	
+	\includegraphics[width=\textwidth]{./ML/04_h.png}
+	
+	\includegraphics[width=\textwidth]{./ML/09_h.png}
+	
+	\includegraphics[width=\textwidth]{./ML/12_h.png}
+	
+	\includegraphics[width=\textwidth]{./ML/15_h.png}
+	
+\end{center}
+
+\newpage
 
 \section{Analiza porównawcza.}
+\subsection{Przetwarzanie obrazów.}
+
+\paragraph{Zestawienie miar statystycznych dla przetworzonych obrazów.}
+\begin{center}
+	
+		\includegraphics[width=\textwidth]{./processing/data.png}
+		
+\end{center}
+
+\subsection{Uczenie maszynowe.}
+
+\paragraph{Zestawienie miar statystycznych dla przetworzonych obrazów.}
+\begin{center}
+	
+	\includegraphics[width=0.6\textwidth]{./ML/data.png}
+	
+\end{center}
+
+\subsection{Głęboka sieć neuronowa.}
+
+\paragraph{Zestawienie miar statystycznych dla przetworzonych obrazów.}
+\begin{center}
+	
+	\includegraphics[width=\textwidth]{./processing/data.png}
+	
+\end{center}
 
 
 

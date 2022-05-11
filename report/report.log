@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.13.2 (TeX Live 2021/W32TeX)  (format=lualatex 2022.3.30)  10 MAY 2022 03:04
+This is LuaHBTeX, Version 1.13.2 (TeX Live 2021/W32TeX)  (format=lualatex 2022.3.30)  11 MAY 2022 04:30
  restricted system commands enabled.
 **report.tex
 (./report.tex
@@ -608,36 +608,159 @@ Overfull \hbox (9.86671pt too wide) in paragraph at lines 46--54
  [] 
  []
 
+[1
 
-Overfull \hbox (5.09586pt too wide) in paragraph at lines 76--76
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (5.09586pt too wide) in paragraph at lines 82--82
 []\TU/lmr/bx/n/14.4 Opis wyko-rzys-tanych metod wykry-wa-nia naczyń dna siatk
 ówki
  []
 
-[1
+<./processing/input_image.png, id=13, 2532.3408pt x 1688.2272pt>
+File: ./processing/input_image.png Graphic file (type png)
+<use ./processing/input_image.png>
+Package luatex.def Info: ./processing/input_image.png  used on input line 87.
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+<./processing/lab_image.png, id=14, 2532.3408pt x 1688.2272pt>
+File: ./processing/lab_image.png Graphic file (type png)
+<use ./processing/lab_image.png>
+Package luatex.def Info: ./processing/lab_image.png  used on input line 95.
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+[2<./processing/input_image.png><./processing/lab_image.png>]
+Overfull \hbox (0.77531pt too wide) in paragraph at lines 102--103
+ \TU/lmr/bx/n/10.95 Wyrów-nanie his-togramu.[] \TU/lmr/m/n/10.95 Za-s-tosowano wari-ant CLAHE wyr
+ów-na-nia his-togramu obrazu
+ []
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-(./report.aux))
+<./processing/clahe_image.png, id=21, 2532.3408pt x 1688.2272pt>
+File: ./processing/clahe_image.png Graphic file (type png)
+<use ./processing/clahe_image.png>
+Package luatex.def Info: ./processing/clahe_image.png  used on input line 104.
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+<./processing/green_image.png, id=22, 2532.3408pt x 1688.2272pt>
+File: ./processing/green_image.png Graphic file (type png)
+<use ./processing/green_image.png>
+Package luatex.def Info: ./processing/green_image.png  used on input line 111.
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+[3<./processing/clahe_image.png><./processing/green_image.png>]
+<./processing/frangi_image.png, id=28, 2532.3408pt x 1688.2272pt>
+File: ./processing/frangi_image.png Graphic file (type png)
+<use ./processing/frangi_image.png>
+Package luatex.def Info: ./processing/frangi_image.png  used on input line 120.
+
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+<./processing/thresh_image.png, id=29, 2532.3408pt x 1688.2272pt>
+File: ./processing/thresh_image.png Graphic file (type png)
+<use ./processing/thresh_image.png>
+Package luatex.def Info: ./processing/thresh_image.png  used on input line 127.
+
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+ [4<./processing/frangi_image.png><./processing/thresh_image.png>]
+<./processing/deblobed_image.png, id=35, 2532.3408pt x 1688.2272pt>
+File: ./processing/deblobed_image.png Graphic file (type png)
+<use ./processing/deblobed_image.png>
+Package luatex.def Info: ./processing/deblobed_image.png  used on input line 13
+5.
+(luatex.def)             Requested size: 362.37569pt x 241.57953pt.
+
+Overfull \hbox (1.65292pt too wide) in paragraph at lines 144--145
+\TU/lmr/m/n/10.95 się). W tym celu sko-rzys-tano z funkcji dostęp-nej w bib-li
+otece numpy - stride_tricks.as_strided(). 
+ []
+
+[5<./processing/deblobed_image.png>]
+<./processing/01_h.png, id=42, 1015.54407pt x 240.9pt>
+File: ./processing/01_h.png Graphic file (type png)
+<use ./processing/01_h.png>
+Package luatex.def Info: ./processing/01_h.png  used on input line 177.
+(luatex.def)             Requested size: 452.9679pt x 107.44827pt.
+<./processing/04_h.png, id=43, 1012.5328pt x 240.9pt>
+File: ./processing/04_h.png Graphic file (type png)
+<use ./processing/04_h.png>
+Package luatex.def Info: ./processing/04_h.png  used on input line 179.
+(luatex.def)             Requested size: 452.9679pt x 107.77174pt.
+<./processing/09_h.png, id=44, 1014.03844pt x 240.9pt>
+File: ./processing/09_h.png Graphic file (type png)
+<use ./processing/09_h.png>
+Package luatex.def Info: ./processing/09_h.png  used on input line 181.
+(luatex.def)             Requested size: 452.9679pt x 107.60634pt.
+<./processing/12_h.png, id=45, 1013.28563pt x 237.88875pt>
+File: ./processing/12_h.png Graphic file (type png)
+<use ./processing/12_h.png>
+Package luatex.def Info: ./processing/12_h.png  used on input line 183.
+(luatex.def)             Requested size: 452.9679pt x 106.34111pt.
+<./processing/15_h.png, id=46, 1014.79124pt x 238.64156pt>
+File: ./processing/15_h.png Graphic file (type png)
+<use ./processing/15_h.png>
+Package luatex.def Info: ./processing/15_h.png  used on input line 185.
+(luatex.def)             Requested size: 452.9679pt x 106.52106pt.
+ [6<./processing/01_h.png><./processing/04_h.png><./processing/09_h.png><./proce
+ssing/12_h.png><./processing/15_h.png>]
+<./ML/01_h.png, id=55, 849.92531pt x 203.25937pt>
+File: ./ML/01_h.png Graphic file (type png)
+<use ./ML/01_h.png>
+Package luatex.def Info: ./ML/01_h.png  used on input line 194.
+(luatex.def)             Requested size: 452.9679pt x 108.32863pt.
+<./ML/04_h.png, id=56, 843.90282pt x 201.00093pt>
+File: ./ML/04_h.png Graphic file (type png)
+<use ./ML/04_h.png>
+Package luatex.def Info: ./ML/04_h.png  used on input line 196.
+(luatex.def)             Requested size: 452.9679pt x 107.88867pt.
+<./ML/09_h.png, id=57, 843.90282pt x 201.00093pt>
+File: ./ML/09_h.png Graphic file (type png)
+<use ./ML/09_h.png>
+Package luatex.def Info: ./ML/09_h.png  used on input line 198.
+(luatex.def)             Requested size: 452.9679pt x 107.88867pt.
+<./ML/12_h.png, id=58, 844.65562pt x 202.50656pt>
+File: ./ML/12_h.png Graphic file (type png)
+<use ./ML/12_h.png>
+Package luatex.def Info: ./ML/12_h.png  used on input line 200.
+(luatex.def)             Requested size: 452.9679pt x 108.60103pt.
+<./ML/15_h.png, id=59, 844.65562pt x 202.50656pt>
+File: ./ML/15_h.png Graphic file (type png)
+<use ./ML/15_h.png>
+Package luatex.def Info: ./ML/15_h.png  used on input line 202.
+(luatex.def)             Requested size: 452.9679pt x 108.60103pt.
+<./processing/data.png, id=60, 663.98062pt x 241.65282pt>
+File: ./processing/data.png Graphic file (type png)
+<use ./processing/data.png>
+Package luatex.def Info: ./processing/data.png  used on input line 214.
+(luatex.def)             Requested size: 452.9679pt x 164.8564pt.
+
+[7<./ML/01_h.png><./ML/04_h.png><./ML/09_h.png><./ML/12_h.png><./ML/15_h.png>]
+<./ML/data.png, id=69, 448.67625pt x 91.09032pt>
+File: ./ML/data.png Graphic file (type png)
+<use ./ML/data.png>
+Package luatex.def Info: ./ML/data.png  used on input line 223.
+(luatex.def)             Requested size: 271.7835pt x 55.17859pt.
+File: ./processing/data.png Graphic file (type png)
+<use ./processing/data.png>
+Package luatex.def Info: ./processing/data.png  used on input line 232.
+(luatex.def)             Requested size: 452.9679pt x 164.8564pt.
+
+[8<./processing/data.png><./ML/data.png>] (./report.aux))
 
 Here is how much of LuaTeX's memory you used:
- 13689 strings out of 477800
+ 13923 strings out of 477800
  100000,662416 words of node,token memory allocated
  604 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 10 glyph, 16 attribute, 53 glue_spe
 c, 16 attribute_list, 2 write nodes
-   avail lists: 2:540,3:196,4:50,5:132,6:43,7:2289,8:1,9:335,10:1,11:111
- 33832 multiletter control sequences out of 65536+600000
+   avail lists: 2:444,3:147,4:50,5:226,6:31,7:3164,8:3,9:318,10:2,11:173
+ 33946 multiletter control sequences out of 65536+600000
  34 fonts using 1644495 bytes
  105i,14n,101p,466b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2021/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/texl
 ive/2021/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/texlive/2021
 /texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/texlive/2021/texm
 f-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/texlive/2021/texmf-dis
-t/fonts/opentype/public/lm/lmroman17-regular.otf>
-Output written on report.pdf (2 pages, 25995 bytes).
+t/fonts/opentype/public/lm/lmroman17-regular.otf><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (8 pages, 29292456 bytes).
 
-PDF statistics: 49 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+PDF statistics: 111 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
