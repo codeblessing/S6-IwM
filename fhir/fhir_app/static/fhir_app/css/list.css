@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    gap: 2em;
+    padding: 1.5em;
+}
+
+button {
+    background-color: white;
+    border: none;
+}
+
+button:focus {
+    background-color: white;
+    outline: 0 !important;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mdc-button.mdc-button--raised {
+    background-color: brown;
+    margin-right: 0;
+}
+
+.patient {
+    gap: 2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    border-style: groove;
+    border-radius: 1.5em;
+    padding: 1em;
+}
+
+.patient:hover {
+    background-color: aliceblue;
+}

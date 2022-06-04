@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+
+h1 {
+    font-size: 300%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.material-symbols-outlined {
+    size: 400%;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+.patient-identifiers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 1.5em;
+    width: 900px;
+
+}
+
+.patient-identifiers>ul {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+
+h3 {
+    font-size: 200%;
+    white-space: nowrap;
+}
+
+
+table {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+
+.observations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 1.5em;
+    width: 900px;
+}
+
+
+tr:nth-child(even) {
+    background-color: aliceblue;
+}
+
+tr:nth-child(odd) {
+    background-color: azure;
+    border-top: 5px solid rgb(14, 14, 14);
+    border-style: solid;
+}
+
+tr:nth-child(2) {
+    text-align: center;
+}
+
+td {
+    border: 1px solid;
+    padding: 1em;
+}
+
+td {
+    width: auto;
+}
+
+.medication {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 1.5em;
+    width: 900px;
+}
