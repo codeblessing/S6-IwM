@@ -18,6 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.PatientListView.as_view(), name='patient_list'),
-    path('patient/<str:id>/', views.PatientView.as_view(), name='patient')
+    path("", views.PatientListView.as_view(), name="patient_list"),
+    path("patient/<str:id>/", views.PatientView.as_view(), name="patient"),
+    path("patient/<str:id>/<str:property_code>/", views.ChartView.as_view(), name="chart"),
 ]

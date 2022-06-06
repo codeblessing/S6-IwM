@@ -39,7 +39,7 @@ p {
     justify-content: center;
     border-style: solid;
     border-radius: 1.5em;
-    width: 900px;
+    width: 1000px;
 
 }
 
@@ -68,7 +68,7 @@ table {
     justify-content: center;
     border-style: solid;
     border-radius: 1.5em;
-    width: 900px;
+    width: 1000px;
 }
 
 
@@ -102,5 +102,5 @@ td {
     justify-content: center;
     border-style: solid;
     border-radius: 1.5em;
-    width: 900px;
+    width: 1000px;
 }

@@ -8,9 +8,10 @@
     <title>Patient</title>
     <link rel="stylesheet" href="{% static 'fhir_app/css/patient.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
-    <h1>{{patient_list.patient.0.resource.name.0.prefix.0}} {{patient_list.entry.0.resource.name.0.given.0}} {{patient_list.entry.0.resource.name.0.family}}</h1>
+    <h1>{{patient_list.entry.0.resource.name.0.prefix.0}} {{patient_list.entry.0.resource.name.0.given.0}} {{patient_list.entry.0.resource.name.0.family}}</h1>
     <h2>
       <span class="material-symbols-outlined">{{patient_list.entry.0.resource.gender}}</span>
     </h2>
@@ -49,32 +50,64 @@
         <th></th>
         
         <tr>
+          <td>Date</td>
           <td>Parameter</td>
           <td>Value</td>
           <td>Unit</td>
-          <td>Date</td>
         </tr>
-        {%for observation in observations.entry|dictsort:"resource.code.text"%}
+        {% regroup observations.entry by resource.effectiveDateTime as observation_list %}
+        {%for day in observation_list%}
         <tr>
-          <td> {{observation.resource.code.text}}</td>
-          <td>
-            {%if observation.resource.valueQuantity.value is not None%}
-            {{observation.resource.valueQuantity.value}}
-            {%else%}
-            {{observation.resource.component.0.valueQuantity.value}}
-            {%endif%}
-          </td>
-          <td>
-            {%if observation.resource.valueQuantity.unit is not None%}
-            {{observation.resource.valueQuantity.unit}}
-            {%else%}
-            {{observation.resource.component.0.valueQuantity.unit}}
-            {%endif%} 
-          </td>
-          <td>
-            {{observation.resource.effectiveDateTime}}
-          </td>
-        </tr>
+            <td rowspan="{{day.list|length}}">{{day.grouper}}</td>
+            {%for observation in day.list%}     
+              <td> {{observation.resource.code.text}} {{forloop.counter}}</td>
+              {% if observation.resource.valueCodeableConcept is not None%}
+              <td colspan="2">
+                {{observation.resource.valueCodeableConcept.text}}
+              </td>
+              {% else %}
+              <td>
+                {%if observation.resource.valueQuantity.value is not None%}
+                {{observation.resource.valueQuantity.value}}
+                {% elif observation.resource.valueCodeableConcept is not None%}
+                {{observation.resource.valueCodeableConcept.text}}
+                {%else%}
+                {{observation.resource.component.0.valueQuantity.value}}
+                {%endif%}
+              </td>
+              <td>
+                {%if observation.resource.valueQuantity.unit is not None%}
+                {{observation.resource.valueQuantity.unit}}
+                {% else %}
+                {{observation.resource.component.0.valueQuantity.unit}}
+                {%endif%}
+                
+              </td>
+              {% endif %}
+              
+              <td>
+                {%if observation.resource.valueQuantity.unit is not None or observation.resource.component.0.valueQuantity.unit is not None%}
+                <a href='{% url "chart" patient_list.entry.0.resource.id observation.resource.code.coding.0.code %}'>
+                  <button class="mdc-button mdc-button--raised">
+                  <span class="material-symbols-outlined">
+                  monitoring
+                  </span>
+                  </button>
+                </a>
+                <a href=''>
+                  <button class="mdc-button mdc-button--raised">
+                    <span class="material-symbols-outlined">
+                    edit
+                    </span>
+                  </button>
+                </a>
+                {%else%}
+                No monitoring available
+                {%endif%}
+                
+              </td>
+            </tr>
+          {%endfor%} 
         {%endfor%}
       </table>
     </div>
@@ -86,24 +119,23 @@
         <caption><h3>No medication received</h3></caption>
         {%else%}
         <caption><h3>Medication</h3></caption>
-        
-        
-
         <th></th>
         <tr>
-          <td>Name</td>
           <td>Time</td>
+          <td>Name</td>
         </tr>
-        {%for medication in medication.entry|dictsort:"resource.authoredOn"%}
-        
+        {%regroup medication.entry by resource.authoredOn as medication_list%}
+
+        {%for day in medication_list%}
         <tr>
-          <td>
-            {{medication.resource.medicationCodeableConcept.coding.0.display}}
-          </td>
-          <td>
-            {{medication.resource.authoredOn}}
-          </td>
-        </tr>
+          <td rowspan="{{day.list|length}}">{{day.grouper}}</td>
+          {%for medication_item in day.list%}
+          
+            <td>
+              {{medication_item.resource.medicationCodeableConcept.coding.0.display}}
+            </td>
+          </tr>
+          {%endfor%}
         {%endfor%}
         {%endif%}
       </table>

@@ -1,0 +1,29 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart</title>
+    <link rel="stylesheet" href="{% static 'fhir_app/css/chart.css' %}">
+</head>
+<body>
+    
+    <div class="chart">
+    {{chart|safe}}
+    </div>
+    
+    <form method="GET" action=".">
+        <div class="form-group col-md-2 col-lg-2">
+          <label for="effectiveDateTimeMin">Start date</label>
+          <input type="date" class="form-control" id="effectiveDateTimeMin" name="date_min">
+        </div>
+        <div class="form-group col-md-2 col-lg-2">
+          <label for="effectiveDateTimeMin">End date</label>
+          <input type="date" class="form-control" id="effectiveDateTimeMin" name="date_max">
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </form>
+</body>
+</html>
