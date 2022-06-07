@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient</title>
+</head>
+
+<body>
+    <div class="patient" id="patient">
+        <div class="patient-data">
+        <form action="." method="get" id="patient-edit">
+            <p>Version id: {{patient.meta.versionId}}</p>
+            <p>Last updated: {{patient.meta.lastUpdated}}</p>
+          <p>Id: {{patient.id}}<p>
+          <p>First name: 
+            <form action="." method="get" id="patient-edit">
+                <input value={{patient.name.0.given.0}} name="name">
+                </input>
+            </form>
+              
+          </p>
+          <p>Surname: {{patient.name.0.family}}<p> 
+          <p>Gender:
+            <form action="." method="get" id="patient-edit">
+                <input value={{patient.gender}} name="gender">
+                </input>
+            </form>
+                
+            </p>
+          <p>Birth date: {{patient.birthDate}}</p>
+        </div>
+        <div class="patient-identifiers">
+          <ul>
+            {%for identifier in patient.identifier%}
+            {%if identifier.type is not None%}
+            <li>
+              <p>{{identifier.type.coding.0.display}} : {{identifier.value}}<p>
+            </li>
+            {%endif%}
+            {%endfor%}
+          </ul>
+        </div>
+</body>
+
+</html>

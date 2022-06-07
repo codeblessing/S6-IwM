@@ -9,6 +9,63 @@ from datetime import date
 observation_get = "http://localhost:8080/baseR4/Observation?_count="
 medication_get = "http://localhost:8080/baseR4/MedicationRequest?_count="
 observation_versions_get = "http://localhost:8080/baseR4/Observation/"
+patient_get = "http://localhost:8080/baseR4/Patient/"
+headers = {}
+headers["Accept"] = "application/json-patch+json"
+headers["Content-Type"] = "application/json-patch+json"
+
+
+class PatientHistoryView(View):
+    def get(self, request, id, versionId):
+        print(versionId)
+        raw_data = requests.get(patient_get + id + "/_history").text
+        history = json.loads(raw_data)
+        context = {}
+        context["history"] = history
+
+        raw_data_current = requests.get(
+            patient_get + id + "/_history/" + str(versionId)
+        ).text
+        current = json.loads(raw_data_current)
+        context["current"] = current
+
+        return render(request, "patient_history.html", context=context)
+
+
+class PatientEditView(View):
+    def get(selt, request, id):
+        gender = request.GET.get("gender")
+        given_name = request.GET.get("name")
+
+        if given_name is not None:
+            d = {}
+            d["op"] = "replace"
+            d["path"] = "/name/0/given/0"
+            d["value"] = given_name
+            d = json.dumps(d)
+            requests.patch(
+                patient_get + id + "/",
+                """[""" + d + """]""",
+                headers=headers,
+            )
+        if gender is not None:
+            d = {}
+            d["op"] = "replace"
+            d["path"] = "/gender"
+            d["value"] = gender
+            d = json.dumps(d)
+            requests.patch(
+                patient_get + id + "/",
+                """[""" + d + """]""",
+                headers=headers,
+            )
+
+        raw_data = requests.get("http://localhost:8080/baseR4/Patient/" + id).text
+        json_data = json.loads(raw_data)
+
+        context = {"patient": json_data}
+
+        return render(request, "patient_edit.html", context=context)
 
 
 class ChartView(View):
@@ -108,16 +165,17 @@ class PatientListView(View):
                 "http://localhost:8080/baseR4/Patient?_count=" + count
             ).text
             json_data = json.loads(raw_data)
-            next_page = json_data["link"][1]["url"]
-            for _ in range(
-                0, json_total["total"] - len(json_data["entry"]), int(count)
-            ):
-                print(next_page)
-                raw_data_2 = requests.get(next_page).text
-                json_data_2 = json.loads(raw_data_2)
-                if json_data_2["link"][1]["relation"] == "next":
-                    next_page = json_data_2["link"][1]["url"]
-                json_data["entry"].extend(json_data_2["entry"][::])
+            if len(json_data["link"]) > 1:
+                next_page = json_data["link"][1]["url"]
+                for _ in range(
+                    0, json_total["total"] - len(json_data["entry"]), int(count)
+                ):
+                    print(next_page)
+                    raw_data_2 = requests.get(next_page).text
+                    json_data_2 = json.loads(raw_data_2)
+                    if json_data_2["link"][1]["relation"] == "next":
+                        next_page = json_data_2["link"][1]["url"]
+                    json_data["entry"].extend(json_data_2["entry"][::])
 
             return render(request, "list_template.html", context=json_data)
 

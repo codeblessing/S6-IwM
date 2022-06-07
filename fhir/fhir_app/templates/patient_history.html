@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient History</title>
+</head>
+<body>
+
+    {% for patient in history.entry%}
+    
+        <button id ="patient-button" class="mdc-button mdc-button--raised">
+            <a href={% url "patient_history" patient.resource.id patient.resource.meta.versionId %}>
+          <span class="mdc-button__label">
+              Version number {{patient.resource.meta.versionId}} <br>
+            Last modified on {{patient.resource.meta.lastUpdated}}</span>
+        </a>
+        </button>
+      
+    {% endfor %}
+    <div class="patient" id="patient">
+        <div class="patient-data">
+            <p>Version id: {{current.meta.versionId}}</p>
+            <p>Last updated: {{current.meta.lastUpdated}}</p>
+          <p>Id: {{current.id}}<p>
+          <p>First name:{{history.entry.0.resource.name.0.given.0}}</p>
+          <p>Surname: {{history.entry.0.resource.name.0.family}}<p> 
+          <p>Gender:{{current.gender}}</p>
+          <p>Birth date: {{history.entry.0.resource.birthDate}}</p>
+        </div>
+        <div class="patient-identifiers">
+          <ul>
+            {%for identifier in history.entry.0.resource.identifier%}
+            {%if identifier.type is not None%}
+            <li>
+              <p>{{identifier.type.coding.0.display}} : {{identifier.value}}<p>
+            </li>
+            {%endif%}
+            {%endfor%}
+          </ul>
+        </div>
+        
+</body>
+</html>

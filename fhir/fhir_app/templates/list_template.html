@@ -55,9 +55,19 @@
         </ul>
       </div>
       <div class="patient-url">
-        <a href='{% url "patient" patient.resource.id %}'>
+        <a href={% url "patient" patient.resource.id %}>
           <button id ="patient-button" class="mdc-button mdc-button--raised">
             <span class="mdc-button__label">Details</span>
+          </button>
+        </a>
+        <a href={% url "patient_edit" patient.resource.id %}>
+          <button id ="patient-edit-button" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__label">Edit</span>
+          </button>
+        </a>
+        <a href={% url "patient_history" patient.resource.id patient.resource.meta.versionId %}>
+          <button id ="patient-edit-button" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__label">History</span>
           </button>
         </a>
       </div>

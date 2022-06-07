@@ -20,5 +20,15 @@ from . import views
 urlpatterns = [
     path("", views.PatientListView.as_view(), name="patient_list"),
     path("patient/<str:id>/", views.PatientView.as_view(), name="patient"),
-    path("patient/<str:id>/<str:property_code>/", views.ChartView.as_view(), name="chart"),
+    path(
+        "patient/<str:id>/<str:property_code>/", views.ChartView.as_view(), name="chart"
+    ),
+    path(
+        "patient-edit/<str:id>/", views.PatientEditView.as_view(), name="patient_edit"
+    ),
+    path(
+        "patient-history/<str:id>/<int:versionId>/",
+        views.PatientHistoryView.as_view(),
+        name="patient_history",
+    ),
 ]

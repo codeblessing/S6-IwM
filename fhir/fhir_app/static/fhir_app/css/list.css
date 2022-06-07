@@ -35,6 +35,7 @@ a {
 .mdc-button.mdc-button--raised {
     background-color: brown;
     margin-right: 0;
+    width: 100%;
 }
 
 .patient {
@@ -51,4 +52,10 @@ a {
 
 .patient:hover {
     background-color: aliceblue;
+}
+
+.patient-url {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
