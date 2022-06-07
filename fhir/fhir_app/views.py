@@ -8,6 +8,7 @@ from datetime import date
 
 observation_get = "http://localhost:8080/baseR4/Observation?_count="
 medication_get = "http://localhost:8080/baseR4/MedicationRequest?_count="
+observation_versions_get = "http://localhost:8080/baseR4/Observation/"
 
 
 class ChartView(View):
@@ -76,7 +77,7 @@ class ChartView(View):
                 x=dates, y=data, labels={"x": "Date", "y": label}, markers=True
             )
             chart = figure.to_html()
-            context = {"chart": chart}
+            context = {"chart": chart, "patient": plot_data}
 
         if number_of_records == 0:
             context = {"chart": "No data available for given period!"}
@@ -162,6 +163,13 @@ class PatientView(View):
                     next_page = json_data_2["link"][1]["url"]
 
                 json_data_observation["entry"].extend(json_data_2["entry"][::])
+
+        # for entry in json_data_observation["entry"]:
+        #     version_raw_data = requests.get(
+        #         observation_versions_get + entry["resource"]["id"] + "/_history"
+        #     ).text
+        #     version_json_data = json.loads(version_raw_data)
+        #     entry["versions"] = version_json_data
 
         # patient medication
         count = "50"

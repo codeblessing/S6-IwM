@@ -1,6 +1,9 @@
 {%load static%}
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'fhir_app/css/patient.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    
 </head>
 <body>
     <h1>{{patient_list.entry.0.resource.name.0.prefix.0}} {{patient_list.entry.0.resource.name.0.given.0}} {{patient_list.entry.0.resource.name.0.family}}</h1>
@@ -16,7 +20,6 @@
       <span class="material-symbols-outlined">{{patient_list.entry.0.resource.gender}}</span>
     </h2>
     <p>Birth date: {{patient_list.entry.0.resource.birthDate}}</p>
-
     <div class="patient-identifiers">
       <h3>Identifiers</h3>
         <ul>
@@ -35,32 +38,31 @@
       <table>
         <caption>
           <h3>Observations</h3>
-          <form method="GET" action=".">
-          <div class="form-group col-md-2 col-lg-2">
-            <label for="effectiveDateTimeMin">Clinically relevant time/time-period for observation minimum</label>
-            <input type="date" class="form-control" id="effectiveDateTimeMin" name="date_min">
-          </div>
-          <div class="form-group col-md-2 col-lg-2">
-            <label for="effectiveDateTimeMin">Clinically relevant time/time-period for observation maximum</label>
-            <input type="date" class="form-control" id="effectiveDateTimeMin" name="date_max">
-          </div>
-          <button type="submit" class="btn btn-primary">Search</button>
-        </form>
+          <form method="GET" action="." class="form-filter">
+            <div class="form-group col-md-2 col-lg-2">
+              <label for="effectiveDateTimeMin">Clinically relevant time/time-period for observation minimum</label>
+              <input type="date" class="form-control" id="effectiveDateTimeMin" name="date_min">
+            </div>
+            <div class="form-group col-md-2 col-lg-2">
+              <label for="effectiveDateTimeMax">Clinically relevant time/time-period for observation maximum</label>
+              <input type="date" class="form-control" id="effectiveDateTimeMax" name="date_max">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
         </caption>
-        <th></th>
-        
-        <tr>
-          <td>Date</td>
-          <td>Parameter</td>
-          <td>Value</td>
-          <td>Unit</td>
-        </tr>
+        <th>Date</th>
+        <th>Parameter</th>
+        <th>Value</th>
+        <th>Unit</th>
+        <th>Actions</th>
+
         {% regroup observations.entry by resource.effectiveDateTime as observation_list %}
         {%for day in observation_list%}
         <tr>
-            <td rowspan="{{day.list|length}}">{{day.grouper}}</td>
+            <td rowspan="{{day.list|length}}" class="date-td">{{day.grouper}}</td>
             {%for observation in day.list%}     
-              <td> {{observation.resource.code.text}} {{forloop.counter}}</td>
+              <td> {{observation.resource.code.text}} {{forloop.counter}}
+              </td>
               {% if observation.resource.valueCodeableConcept is not None%}
               <td colspan="2">
                 {{observation.resource.valueCodeableConcept.text}}
@@ -86,32 +88,33 @@
               {% endif %}
               
               <td>
-                {%if observation.resource.valueQuantity.unit is not None or observation.resource.component.0.valueQuantity.unit is not None%}
-                <a href='{% url "chart" patient_list.entry.0.resource.id observation.resource.code.coding.0.code %}'>
-                  <button class="mdc-button mdc-button--raised">
-                  <span class="material-symbols-outlined">
-                  monitoring
-                  </span>
-                  </button>
-                </a>
-                <a href=''>
-                  <button class="mdc-button mdc-button--raised">
-                    <span class="material-symbols-outlined">
-                    edit
-                    </span>
-                  </button>
-                </a>
-                {%else%}
-                No monitoring available
-                {%endif%}
-                
+                <div class="actions">
+                  
+                    {%if observation.resource.valueQuantity.unit is not None or observation.resource.component.0.valueQuantity.unit is not None%}
+                    <form action="{% url "chart" patient_list.entry.0.resource.id observation.resource.code.coding.0.code %}" class="action-forms">
+                      <button class="mdc-button mdc-button--raised">
+                        <span class="material-symbols-outlined">
+                          monitoring
+                        </span>
+                      </button>
+                    </form>
+                    {%endif%}
+                    <form action="." method="GET" id="edit" class="action-forms">
+                      <button class="mdc-button mdc-button--raised">
+                        <span class="material-symbols-outlined">
+                          edit
+                        </span>
+                      </button>
+                    </form>
+                  
+              </div>
               </td>
             </tr>
           {%endfor%} 
         {%endfor%}
       </table>
     </div>
-
+    
     <div class="medication">
       
       <table>
@@ -119,18 +122,15 @@
         <caption><h3>No medication received</h3></caption>
         {%else%}
         <caption><h3>Medication</h3></caption>
-        <th></th>
-        <tr>
-          <td>Time</td>
-          <td>Name</td>
-        </tr>
+        <th>Time</th>
+        <th>Name</th>
+        
         {%regroup medication.entry by resource.authoredOn as medication_list%}
 
         {%for day in medication_list%}
         <tr>
           <td rowspan="{{day.list|length}}">{{day.grouper}}</td>
           {%for medication_item in day.list%}
-          
             <td>
               {{medication_item.resource.medicationCodeableConcept.coding.0.display}}
             </td>

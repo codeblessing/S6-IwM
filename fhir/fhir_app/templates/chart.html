@@ -1,4 +1,7 @@
 {%load static%}
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +12,9 @@
     <link rel="stylesheet" href="{% static 'fhir_app/css/chart.css' %}">
 </head>
 <body>
-    
+  <h5>Data for patient: {{patient.entry.0.resource.subject.reference|cut:"Patient/"}}</h5>
     <div class="chart">
+      
     {{chart|safe}}
     </div>
     

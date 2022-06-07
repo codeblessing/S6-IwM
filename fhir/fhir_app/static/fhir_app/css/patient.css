@@ -23,6 +23,7 @@ p {
     flex-direction: row;
     justify-content: space-between;
 }
+
 .material-symbols-outlined {
     size: 400%;
     font-variation-settings:
@@ -54,13 +55,6 @@ h3 {
     white-space: nowrap;
 }
 
-
-table {
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 2em;
-}
-
 .observations {
     display: flex;
     flex-direction: column;
@@ -71,6 +65,13 @@ table {
     width: 1000px;
 }
 
+th {
+    background-color: bisque;
+    border: 1px solid;
+    padding: 1em;
+    text-align: center;
+}
+
 
 tr:nth-child(even) {
     background-color: aliceblue;
@@ -78,8 +79,10 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: azure;
-    border-top: 5px solid rgb(14, 14, 14);
-    border-style: solid;
+}
+
+.date-td {
+    background-color: lavenderblush;
 }
 
 tr:nth-child(2) {
@@ -91,8 +94,8 @@ td {
     padding: 1em;
 }
 
-td {
-    width: auto;
+a {
+    color: red;
 }
 
 .medication {
@@ -103,4 +106,35 @@ td {
     border-style: solid;
     border-radius: 1.5em;
     width: 1000px;
+}
+
+.actions {
+    flex-direction: row;
+    display: flex;
+    gap: 0.5em;
+}
+
+.form-filter {
+    width: 600px;
+}
+
+tbody {
+    width: 900px;
+}
+
+table {
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-bottom: 3em;
+    width: 900px;
+}
+
+label {
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+.action-forms {
+    margin-block-end: 0;
 }

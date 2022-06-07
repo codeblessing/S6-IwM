@@ -76,3 +76,17 @@
 
 </body>
 </html>
+
+
+{% if observation.versions.total > 1 %}
+                <form action="." method="get">
+                  <select name="version" class="form-control">
+                    <option label="--select version --">{{observation.resource.meta.versionId}} (current version)</option>
+                    {% for version in observation.versions.entry %}
+                    {{version.resource.meta.versionId}}
+                    <option class="form-control" value={{version.resource.meta.versionId}}>{{version.resource.meta.versionId}}</option>
+                    {% endfor %}
+                  </select>
+                  <button type="submit" class="btn btn-primary">Change version</button>
+                </form>
+                {% endif %}
