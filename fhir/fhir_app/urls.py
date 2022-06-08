@@ -27,8 +27,26 @@ urlpatterns = [
         "patient-edit/<str:id>/", views.PatientEditView.as_view(), name="patient_edit"
     ),
     path(
-        "patient-history/<str:id>/<int:versionId>/",
+        "patient-history/<str:id>/<int:version_id>/",
         views.PatientHistoryView.as_view(),
-        name="patient_history",
+        name="patient_history"
     ),
+    path(
+        "observation-edit/<str:id>/", views.ObservationEditView.as_view(), name="observation_edit"
+    ),
+    path(
+        "observation-history/<str:id>/<int:version_id>/",
+        views.ObservationHistoryView.as_view(),
+        name="observation_history"
+    ),
+    path(
+        "medication-history/<str:id>/<int:version_id>/",
+        views.MedicationHistoryView.as_view(),
+        name="medication_history"
+    ),
+    path(
+        "medication-edit/<str:id>/",
+        views.MedicationEditView.as_view(),
+        name="medication_edit"
+    )
 ]

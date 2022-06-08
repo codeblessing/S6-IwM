@@ -1,21 +1,19 @@
 body {
     display: flex;
     flex-direction: column;
+    align-self: center;
+    justify-content: space-around;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    justify-content: space-between;
     gap: 0.5em;
-
 }
 
 .form-group {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     gap: 1.5em;
 }
 
@@ -23,6 +21,31 @@ form {
     padding: 1.5em;
 }
 
-body > h5 {
+body>h5 {
     text-align: center !important;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    width: inherit;
+    padding-top: 1em;
+    gap: 8px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 1em;
+    align-self: center;
+}
+
+.filter-button {
+    background-color: lightseagreen;
+}
+
+.return-button {
+    background-color: orange;
 }

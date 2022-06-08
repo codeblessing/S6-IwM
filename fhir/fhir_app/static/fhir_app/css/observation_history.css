@@ -1,0 +1,50 @@
+body {
+    margin: 1em;
+}
+
+a,
+.btn {
+    margin-right: 0;
+    width: inherit;
+}
+
+.observation-data {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    align-items: center;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    width: inherit;
+    padding-top: 1em;
+    gap: 8px;
+}
+
+.edit-button {
+    background-color: lightskyblue;
+}
+
+.return-button {
+    background-color: orange;
+}
+
+.version-buttons {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+
+.version-button {
+    background-color: aliceblue;
+    height: fit-content;
+}
+
+.mdc-button__label {
+    color: black;
+}

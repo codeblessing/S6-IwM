@@ -1,0 +1,53 @@
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedicationRequest History</title>
+    <link rel="stylesheet" href="{% static 'fhir_app/css/medication_history.css' %}">
+</head>
+<body>
+    <div class="version-buttons">
+    {% for medication in history.entry%}
+    <a href={% url "medication_history" medication.resource.id medication.resource.meta.versionId %}>
+        <button id="medication-button" class="btn version-button">
+          <span class="mdc-button__label">
+            Version number {{medication.resource.meta.versionId}} <br>
+            Last modified on {{medication.resource.meta.lastUpdated}}</span>
+        </button>
+    </a>
+         
+    {% endfor %}
+    </div>
+    <div class="medication" id="patient">
+        <div class="medication-data">
+            <p>Version id: {{current.meta.versionId}}</p>
+            <p>Last updated: {{current.meta.lastUpdated}}</p>
+            <p>Id: {{current.id}}</p>
+            <p>Status: {{current.status}}</p>
+            <p>Medication: {{current.medicationCodeableConcept.text}}</p>
+            <p>Authored on: {{current.authoredOn}}</p>
+            <p>Requester: {{current.requester.display}}</p>
+
+            <div class="buttons">
+                <a href={% url "medication_edit" current.id%}>
+                    <button class="btn edit-button">
+                        <span class="mdc-button__label">edit last version</span>
+                    </button>
+                </a>
+                <a href={% url "patient" current.subject.reference|cut:"Patient/" %}>
+                    <button class="btn return-button">
+                        <span class="mdc-button__label">return to list</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

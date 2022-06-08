@@ -1,0 +1,55 @@
+body {
+    margin: 1em;
+}
+
+select {
+    display: inline;
+}
+
+.patient-data {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    align-items: center;
+    width: 100%;
+}
+
+.patient-identifiers {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    align-items: center;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    width: inherit;
+    padding-top: 1em;
+    gap: 8px;
+}
+
+input {
+    text-align: center;
+}
+
+.update-button {
+    background-color: lightseagreen;
+}
+
+.history-button {
+    background-color: yellowgreen;
+    width: inherit;
+}
+
+.return-button {
+    background-color: orange;
+}
+
+a,
+.btn {
+    margin-right: 0;
+    width: inherit;
+}

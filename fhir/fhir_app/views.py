@@ -8,23 +8,138 @@ from datetime import date
 
 observation_get = "http://localhost:8080/baseR4/Observation?_count="
 medication_get = "http://localhost:8080/baseR4/MedicationRequest?_count="
+medication_versions_get = "http://localhost:8080/baseR4/MedicationRequest/"
 observation_versions_get = "http://localhost:8080/baseR4/Observation/"
 patient_get = "http://localhost:8080/baseR4/Patient/"
+observation_patch = "http://localhost:8080/baseR4/Observation/"
 headers = {}
 headers["Accept"] = "application/json-patch+json"
 headers["Content-Type"] = "application/json-patch+json"
 
 
+class MedicationEditView(View):
+    def get(self, request, id):
+        status = request.GET.get("status")
+        sequence = request.GET.get("sequence")
+
+        value_path = "/status"
+        sequence_path = "/dosageInstruction/0/sequence"
+        if status is not None:
+            d = {}
+            d["op"] = "replace"
+            d["path"] = value_path
+            d["value"] = status
+            d = json.dumps(d)
+            requests.patch(
+                medication_versions_get + id + "/",
+                """[""" + d + """]""",
+                headers=headers,
+            )
+
+        if sequence is not None:
+            d = {}
+            d["op"] = "replace"
+            d["path"] = sequence_path
+            d["value"] = sequence
+            d = json.dumps(d)
+            requests.patch(
+                medication_versions_get + id + "/",
+                """[""" + d + """]""",
+                headers=headers,
+            )
+        
+
+        raw_data = requests.get(medication_versions_get + id).text
+        json_data = json.loads(raw_data)
+        context = {"medication": json_data}
+
+        return render(request, "medication_edit.html", context=context)
+
+
+class MedicationHistoryView(View):
+    def get(self, request, id, version_id):
+        raw_data = requests.get(medication_versions_get + id + "/_history").text
+        history = json.loads(raw_data)
+        context = {}
+        context["history"] = history
+        raw_data_current = requests.get(
+            medication_versions_get + id + "/_history/" + str(version_id)
+        ).text
+        current = json.loads(raw_data_current)
+        context["current"] = current
+
+        return render(request, "medication_history.html", context=context)
+
+
+class ObservationHistoryView(View):
+    def get(self, request, id, version_id):
+        raw_data = requests.get(observation_versions_get + id + "/_history").text
+        history = json.loads(raw_data)
+        context = {}
+        context["history"] = history
+
+        raw_data_current = requests.get(
+            observation_versions_get + id + "/_history/" + str(version_id)
+        ).text
+        current = json.loads(raw_data_current)
+        context["current"] = current
+
+        return render(request, "observation_history.html", context=context)
+
+
+class ObservationEditView(View):
+    def get(self, request, id):
+        raw_data = requests.get(observation_patch + id).text
+        json_data = json.loads(raw_data)
+
+        if json_data.get("valueQuantity"):
+            value_path = "/valueQuantity/value"
+        elif json_data.get("component"):
+            value_path = "/component/0/valueQuantity/value"
+
+        value = request.GET.get("value")
+        status = request.GET.get("status")
+
+        if value is not None:
+            d = {}
+            d["op"] = "replace"
+            d["path"] = value_path
+            d["value"] = value
+            d = json.dumps(d)
+            requests.patch(
+                observation_patch + id + "/",
+                """[""" + d + """]""",
+                headers=headers,
+            )
+        if status is not None:
+            d = {}
+            d["op"] = "replace"
+            d["path"] = "/status"
+            d["value"] = status
+            d = json.dumps(d)
+            requests.patch(
+                observation_patch + id + "/",
+                """[""" + d + """]""",
+                headers=headers,
+            )
+
+        raw_data = requests.get(observation_patch + id).text
+        json_data = json.loads(raw_data)
+
+        context = {"observation": json_data}
+
+        return render(request, "observation_edit.html", context=context)
+
+
 class PatientHistoryView(View):
-    def get(self, request, id, versionId):
-        print(versionId)
+    def get(self, request, id, version_id):
         raw_data = requests.get(patient_get + id + "/_history").text
         history = json.loads(raw_data)
         context = {}
         context["history"] = history
 
         raw_data_current = requests.get(
-            patient_get + id + "/_history/" + str(versionId)
+            patient_get + id + "/_history/" + str(version_id)
         ).text
         current = json.loads(raw_data_current)
         context["current"] = current
@@ -33,7 +148,7 @@ class PatientHistoryView(View):
 
 
 class PatientEditView(View):
-    def get(selt, request, id):
+    def get(self, request, id):
         gender = request.GET.get("gender")
         given_name = request.GET.get("name")
 
@@ -129,9 +244,9 @@ class ChartView(View):
                         data.append(
                             d["resource"]["component"][0]["valueQuantity"]["value"]
                         )
-
-            figure = px.line(
-                x=dates, y=data, labels={"x": "Date", "y": label}, markers=True
+            
+            figure = px.scatter(
+                x=dates, y=data, labels={"x": "Date", "y": label}
             )
             chart = figure.to_html()
             context = {"chart": chart, "patient": plot_data}

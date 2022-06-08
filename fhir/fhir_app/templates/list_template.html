@@ -43,6 +43,7 @@
         <p>Gender: {{patient.resource.gender}}</p>
         <p>Birth date: {{patient.resource.birthDate}}</p>
       </div>
+      
       <div class="patient-identifiers">
         <ul>
           {%for identifier in patient.resource.identifier%}
@@ -65,11 +66,13 @@
             <span class="mdc-button__label">Edit</span>
           </button>
         </a>
+        {% if patient.resource.meta.versionId > "1" %}
         <a href={% url "patient_history" patient.resource.id patient.resource.meta.versionId %}>
           <button id ="patient-edit-button" class="mdc-button mdc-button--raised">
             <span class="mdc-button__label">History</span>
           </button>
         </a>
+        {% endif %}
       </div>
     </div>
   </li>
@@ -79,24 +82,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</body>
-
-</html>
-
 </body>
 </html>
 
-
-{% if observation.versions.total > 1 %}
-                <form action="." method="get">
-                  <select name="version" class="form-control">
-                    <option label="--select version --">{{observation.resource.meta.versionId}} (current version)</option>
-                    {% for version in observation.versions.entry %}
-                    {{version.resource.meta.versionId}}
-                    <option class="form-control" value={{version.resource.meta.versionId}}>{{version.resource.meta.versionId}}</option>
-                    {% endfor %}
-                  </select>
-                  <button type="submit" class="btn btn-primary">Change version</button>
-                </form>
-                {% endif %}

@@ -4,6 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 1em;
 }
 
 form {
@@ -11,25 +12,10 @@ form {
     padding: 1.5em;
 }
 
-button {
-    background-color: white;
-    border: none;
-}
-
-button:focus {
-    background-color: white;
-    outline: 0 !important;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-a {
-    text-decoration: none;
-    color: white;
 }
 
 .mdc-button.mdc-button--raised {
@@ -44,7 +30,6 @@ a {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
     border-style: groove;
     border-radius: 1.5em;
     padding: 1em;
@@ -58,4 +43,28 @@ a {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+}
+
+a {
+    color: transparent;
+    background-color: transparent !important;
+}
+
+a:hover {
+    color: darkslategrey;
+    text-decoration: none !important;
+}
+
+button {
+    background-color: white;
+    border: none;
+}
+
+button:focus {
+    background-color: white;
+    outline: 0 !important;
+}
+
+button:hover {
+    color: inherit;
 }

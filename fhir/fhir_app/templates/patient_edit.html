@@ -1,3 +1,7 @@
+{%load static%}
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,32 +10,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Patient</title>
+    <link rel="stylesheet" href="{% static 'fhir_app/css/patient_edit.css' %}">
 </head>
 
 <body>
     <div class="patient" id="patient">
         <div class="patient-data">
-        <form action="." method="get" id="patient-edit">
-            <p>Version id: {{patient.meta.versionId}}</p>
-            <p>Last updated: {{patient.meta.lastUpdated}}</p>
+        
+          <p>Version id: {{patient.meta.versionId}}</p>
+          <p>Last updated: {{patient.meta.lastUpdated}}</p>
           <p>Id: {{patient.id}}<p>
-          <p>First name: 
-            <form action="." method="get" id="patient-edit">
-                <input value={{patient.name.0.given.0}} name="name">
-                </input>
-            </form>
-              
-          </p>
-          <p>Surname: {{patient.name.0.family}}<p> 
-          <p>Gender:
-            <form action="." method="get" id="patient-edit">
-                <input value={{patient.gender}} name="gender">
-                </input>
-            </form>
-                
-            </p>
+          <form action="." method="get" id="patient-edit">
+            <label for="name">First name: </label>
+              <input value={{patient.name.0.given.0}} name="name" id="name">
+              </input>
+            <p>Surname: {{patient.name.0.family}}<p> 
+            <label for="gender">Gender: </label>
+            
+              <input value={{patient.gender}} name="gender" id="gender">
+              </input>
+          
           <p>Birth date: {{patient.birthDate}}</p>
-        </div>
+        </form>
+
         <div class="patient-identifiers">
           <ul>
             {%for identifier in patient.identifier%}
@@ -43,6 +44,24 @@
             {%endfor%}
           </ul>
         </div>
+        <div class="buttons">
+            <button type="submit" class="btn update-button" form="patient-edit">
+                <span class="mdc-button__label">UPDATE</span>
+            </button>
+            <a href={% url "patient_history" patient.id patient.meta.versionId%}>
+                <button class="btn history-button">
+                    <span class="mdc-button__label">HISTORY</span>
+                </button>
+            </a>
+            <a href={% url "patient_list" %}>
+                <button class="btn return-button">
+                    <span class="mdc-button__label">RETURN</span>
+                </button>
+            </a>
+          </div>
+        </div>
+        
+      </div>
 </body>
 
 </html>

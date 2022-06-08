@@ -1,0 +1,57 @@
+ {%load static%}{% include 'material/includes/material_css.html' %} {% include 'material/includes/material_js.html' %} {% load material_form %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit MedicationRequest</title>
+    <link rel="stylesheet" href="{% static 'fhir_app/css/medication_edit.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="medication" id="medication">
+        <div class="medication-data">
+
+            <p>Version id: {{medication.meta.versionId}}</p>
+            <p>Last updated: {{medication.meta.lastUpdated}}</p>
+            <p>Id: {{medication.id}}</p>
+            <form action="." method="get" id="medication-edit">
+            <label for="sequence">Dosage sequence: </label>
+                {%if medication.dosageInstruction is not None%}
+                <input value={{medication.dosageInstruction.0.sequence}} name="sequence" id="sequence"></input>
+                {%endif%}
+            <p>Medication: {{medication.medicationCodeableConcept.text}}</p>
+            <p>Authored on: {{medication.authoredOn}}</p>
+            <label for="status">Status: </label>
+                <input value={{medication.status}} name="status" id="status">
+                </input> 
+            </form>
+            <p>Requester: {{medication.requester.display}}</p>
+            <div class="buttons">
+                <button type="submit" class="btn update-button" form="medication-edit">
+                    <span class="mdc-button__label">UPDATE</span>
+                </button>
+
+                <a href={% url "medication_history" medication.id medication.meta.versionId%}>
+                    <button class="btn history-button">
+                        <span class="mdc-button__label">HISTORY</span>
+                    </button>
+                </a>
+
+                <a href={% url "patient" medication.subject.reference|cut:"Patient/" %}>
+                    <button class="btn return-button">
+                        <span class="mdc-button__label">RETURN</span>
+                    </button>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
